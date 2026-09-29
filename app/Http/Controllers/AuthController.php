@@ -28,7 +28,11 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'));
+        $dashboard = $request->user()->role === 'sesditjen'
+            ? route('sesditjen.dashboard')
+            : route('kepegawaian.dashboard');
+
+        return redirect()->intended($dashboard);
     }
 
     public function setupForm(): View|RedirectResponse
@@ -56,7 +60,7 @@ class AuthController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect()->route('dashboard')->with('status', 'Akun Kepegawaian berhasil dibuat.');
+        return redirect()->route('kepegawaian.dashboard')->with('status', 'Akun Kepegawaian berhasil dibuat.');
     }
 
     public function logout(Request $request): RedirectResponse

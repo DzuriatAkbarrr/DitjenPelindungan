@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Kepegawaian;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class UserController extends Controller
     {
         abort_unless(auth()->user()->role === 'kepegawaian', 403);
 
-        return view('users.index', ['users' => User::query()->orderBy('name')->get()]);
+        return view('kepegawaian.users.index', ['users' => User::query()->orderBy('name')->get()]);
     }
 
     public function store(Request $request): RedirectResponse

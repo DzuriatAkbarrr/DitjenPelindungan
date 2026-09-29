@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pengguna · RuangKerja KP2MI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}
+body{margin:0;
+    background:#f5f7fb;
+    color:#172440;
+    font-family:'DM Sans',sans-serif}
+.top{height:68px;
+    background:#fff;
+    border-bottom:1px solid #edf0f5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 max(calc((100vw - 1050px)/2),24px)}
+.brand{font:800 15px Manrope;
+    color:#23345b;
+    text-decoration:none}
+.brand span{color:#526fe0}
+.top a.back{font-size:12px;
+    color:#526fe0;
+    text-decoration:none;
+    font-weight:700}
+.wrap{max-width:1050px;
+    margin:38px auto;
+    padding:0 20px}
+.heading{display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:20px}
+.eyebrow{font-size:10px;
+    letter-spacing:1.5px;
+    color:#8996aa;
+    font-weight:700}
+.heading h1{font:800 27px Manrope;
+    letter-spacing:-.8px;
+    margin:7px 0}
+.heading p{font-size:12px;
+    color:#8793a7;
+    margin:0}
+.grid{display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:16px}
+.panel{background:#fff;
+    border:1px solid #edf0f5;
+    border-radius:16px;
+    padding:21px;
+    box-shadow:0 12px 40px #1b2a4a0d}
+.panel h2{font:700 14px Manrope;
+    margin:0 0 5px}
+.hint{font-size:11px;
+    color:#94a0b2;
+    margin:0 0 18px}
+.field{display:grid;
+    gap:6px;
+    margin:12px 0}
+.field label{font-size:10px;
+    font-weight:700;
+    color:#56647b}
+.field input,.field select{height:40px;
+    border:1px solid #e5e9f0;
+    border-radius:9px;
+    padding:0 10px;
+    background:#fff;
+    color:#34415a;
+    font:12px 'DM Sans';
+    outline:0}
+.field input:focus,.field select:focus{border-color:#7489e8;
+    box-shadow:0 0 0 3px #536fe31a}
+.row{display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px}
+.submit{border:0;
+    background:#526fe0;
+    color:#fff;
+    border-radius:9px;
+    padding:11px 14px;
+    font-size:11px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:8px}
+.alert{background:#e8f7ef;
+    color:#328563;
+    padding:11px;
+    border-radius:9px;
+    font-size:11px;
+    margin-bottom:15px}
+.error{font-size:10px;
+    color:#c9505d}
+details{min-width:145px}
+details summary{font-size:10px;
+    color:#526fe0;
+    font-weight:700;
+    cursor:pointer}
+details form{display:grid;
+    gap:6px;
+    margin-top:8px}
+details input{height:31px;
+    min-width:135px;
+    border:1px solid #e5e9f0;
+    border-radius:7px;
+    padding:0 7px;
+    font:10px 'DM Sans'}
+details button{border:0;
+    border-radius:7px;
+    background:#526fe0;
+    color:#fff;
+    padding:7px;
+    font-size:9px;
+    font-weight:700;
+    cursor:pointer}
+.table{width:100%;
+    border-collapse:collapse;
+    margin-top:10px}
+.table th{text-align:left;
+    font-size:9px;
+    text-transform:uppercase;
+    color:#99a4b4;
+    letter-spacing:.6px;
+    padding:10px 7px;
+    border-bottom:1px solid #edf0f5}
+.table td{font-size:11px;
+    padding:12px 7px;
+    border-bottom:1px solid #f2f4f7}
+.table tr:last-child td{border-bottom:0}
+.role{font-size:9px;
+    font-weight:700;
+    border-radius:20px;
+    padding:5px 8px;
+    background:#eef1ff;
+    color:#536de3}
+.role.sesditjen{background:#e6f7ef;
+    color:#31936b}
+@media(max-width:760px){.grid{grid-template-columns:1fr}
+.heading{align-items:flex-start;
+    flex-direction:column;
+    gap:10px}
+.panel{padding:16px}
+.wrap{margin-top:25px}
+}
+
+@include('shared.sidebar-styles')
+</style>
+</head>
+<body>
+@include('shared.sidebar')<header class="top">
+<button class="mobile-toggle" id="menu-toggle" aria-label="Buka menu">☰</button>
+<a class="brand" href="{{ route('kepegawaian.dashboard') }}">
+<span>✳</span> RuangKerja <span style="color:#a2adbd">KP2MI</span>
+</a>
+</header>
+<main class="wrap">
+<div class="heading">
+<div>
+<div class="eyebrow">PENGELOLAAN AKSES</div>
+<h1>Pengguna workspace</h1>
+<p>Buat akun dan tetapkan peran untuk mengatur akses dashboard.</p>
+</div>
+</div>
+<div class="grid">
+<section class="panel">
+<h2>Tambah pengguna</h2>
+<p class="hint">Kata sandi disimpan dalam bentuk hash di database.</p>
+@if(session('status'))<div class="alert">{{ session('status') }}</div>
+@endif<form method="POST" action="{{ route('kepegawaian.users.store') }}">
+@csrf<div class="field">
+<label>Nama lengkap</label>
+<input name="name" value="{{ old('name') }}" required>
+@error('name')<span class="error">{{ $message }}</span>
+@enderror</div>
+<div class="field">
+<label>Email</label>
+<input type="email" name="email" value="{{ old('email') }}" placeholder="nama@kp2mi.go.id" required>
+@error('email')<span class="error">{{ $message }}</span>
+@enderror</div>
+<div class="field">
+<label>Peran</label>
+<select name="role" required>
+<option value="kepegawaian">Kepegawaian · pengelola</option>
+<option value="sesditjen">Sesditjen · pemberi persetujuan</option>
+</select>
+@error('role')<span class="error">{{ $message }}</span>
+@enderror</div>
+<div class="row">
+<div class="field">
+<label>Kata sandi · minimal 8 karakter</label>
+<input type="password" name="password" required>
+@error('password')<span class="error">{{ $message }}</span>
+@enderror</div>
+<div class="field">
+<label>Ulangi kata sandi</label>
+<input type="password" name="password_confirmation" required>
+</div>
+</div>
+<button class="submit" type="submit">Simpan akun</button>
+</form>
+</section>
+<section class="panel">
+<h2>Akun terdaftar</h2>
+<p class="hint">Akses aplikasi mengikuti peran yang ditetapkan.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Nama</th>
+<th>Peran</th>
+<th>Akses</th>
+</tr>
+</thead>
+<tbody>
+@foreach($users as $user)<tr>
+<td>
+<b>{{ $user->name }}</b>
+<br>
+<span style="color:#929daf;font-size:10px">{{ $user->email }}</span>
+</td>
+<td>
+<span class="role {{ $user->role }}">{{ $user->role === 'sesditjen' ? 'Sesditjen' : 'Kepegawaian' }}</span>
+</td>
+<td>
+<details>
+<summary>Ubah sandi</summary>
+<form method="POST" action="{{ route('kepegawaian.users.password', $user) }}">
+@csrf @method('PUT')<input type="password" name="password" placeholder="Kata sandi baru" minlength="8" required>
+<input type="password" name="password_confirmation" placeholder="Ulangi kata sandi" minlength="8" required>
+<button type="submit">Simpan sandi</button>
+</form>
+@error('password')<span class="error">{{ $message }}</span>
+@enderror</details>
+</td>
+</tr>
+@endforeach</tbody>
+</table>
+</section>
+</div>
+</main>
+<script>document.getElementById("menu-toggle")?.addEventListener("click",()=>document.getElementById("sidebar")?.classList.toggle("open"));</script>
+</body>
+</html>

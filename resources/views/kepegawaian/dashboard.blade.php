@@ -1,0 +1,1 @@
+@include('shared.dashboard-content')
