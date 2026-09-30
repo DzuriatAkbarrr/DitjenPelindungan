@@ -6,10 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\EmployeeRecord;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class EmployeeRecordController extends Controller
 {
+    private const WORK_UNITS = [
+        'Sekretariat Direktorat Jenderal Pelindungan',
+        'Direktur Siber Pelindungan PMI',
+        'Direktur Layanan Pengaduan, Mediasi dan Advokasi PMI pada Pemberi Kerja Perseorangan',
+        'Direktur Layanan Pengaduan, Mediasi dan Advokasi PMI pada Pemberi Kerja Berbadan Hukum',
+        'Direktur Bina Kemitraan Pelindungan',
+    ];
+
     public function index(): View
     {
         $this->authorizeKepegawaian();
@@ -18,6 +27,7 @@ class EmployeeRecordController extends Controller
             'employees' => EmployeeRecord::query()->orderBy('name')->get(),
             'activeCount' => EmployeeRecord::where('status', 'Aktif')->count(),
             'inactiveCount' => EmployeeRecord::where('status', 'Nonaktif')->count(),
+            'workUnits' => self::WORK_UNITS,
         ]);
     }
 
@@ -28,7 +38,7 @@ class EmployeeRecordController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'nip' => ['required', 'string', 'max:30', 'unique:employee_records,nip'],
-            'unit' => ['required', 'string', 'max:150'],
+            'unit' => ['required', 'string', Rule::in(self::WORK_UNITS)],
         ]);
 
         EmployeeRecord::create($data);

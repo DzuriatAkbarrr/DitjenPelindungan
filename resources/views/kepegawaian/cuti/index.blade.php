@@ -288,7 +288,7 @@ details summary::-webkit-details-marker{display:none}
 <h1>Rekap cuti pegawai</h1>
 <p>Catat dan kelola pengajuan cuti pegawai dalam satu tempat.</p>
 </div>
-<button class="button" type="button" onclick="document.getElementById('form-cuti').scrollIntoView({behavior:'smooth'});document.getElementById('form-cuti').open=true">ï¼‹ Tambah rekap cuti</button>
+<button class="button" type="button" onclick="document.getElementById('form-cuti').scrollIntoView({behavior:'smooth'});document.getElementById('form-cuti').open=true"> Tambah rekap cuti</button>
 </div>
         @if(session('status'))<div class="flash success">{{ session('status') }}</div>
 @endif
@@ -315,7 +315,7 @@ details summary::-webkit-details-marker{display:none}
 <h2>Tambah rekap cuti</h2>
 <p>Lengkapi data pegawai, jenis, dan rentang cuti.</p>
 </div>
-<span class="subtle">Buka formulir ï¼‹</span>
+<span class="subtle">Buka formulir</span>
 </summary>
             <form method="POST" action="{{ route('kepegawaian.cuti.store') }}">
 @csrf

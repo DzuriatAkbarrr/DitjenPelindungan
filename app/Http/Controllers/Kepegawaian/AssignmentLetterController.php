@@ -15,7 +15,7 @@ class AssignmentLetterController extends Controller
     {
         $this->authorizeKepegawaian();
 
-        return view('kepegawaian.surat-tugas.index', [
+        return view('kepegawaian.surat-perjalanan-dinas.index', [
             'letters' => AssignmentLetter::query()->latest()->get(),
             'pendingCount' => AssignmentLetter::where('status', 'Menunggu')->count(),
             'approvedCount' => AssignmentLetter::where('status', 'Disetujui')->count(),
@@ -43,17 +43,17 @@ class AssignmentLetterController extends Controller
         $year = Carbon::parse($letter->start_date)->format('Y');
         $letter->update(['number' => sprintf('ST-%04d/KP2MI/%s', $letter->id, $year)]);
 
-        return back()->with('status', 'Surat tugas berhasil diajukan untuk persetujuan Sesditjen.');
+        return back()->with('status', 'Surat perjalanan dinas berhasil diajukan untuk persetujuan Sesditjen.');
     }
 
     public function destroy(AssignmentLetter $assignmentLetter): RedirectResponse
     {
         $this->authorizeKepegawaian();
-        abort_unless($assignmentLetter->status === 'Menunggu', 422, 'Surat tugas yang sudah diputuskan tidak dapat dihapus.');
+        abort_unless($assignmentLetter->status === 'Menunggu', 422, 'Surat perjalanan dinas yang sudah diputuskan tidak dapat dihapus.');
 
         $assignmentLetter->delete();
 
-        return back()->with('status', 'Surat tugas yang menunggu persetujuan berhasil dihapus.');
+        return back()->with('status', 'Surat perjalanan dinas yang menunggu persetujuan berhasil dihapus.');
     }
 
     private function authorizeKepegawaian(): void

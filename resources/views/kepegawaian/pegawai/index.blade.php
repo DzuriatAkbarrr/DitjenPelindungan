@@ -19,7 +19,7 @@ body{margin:0;
     background:var(--bg);
     color:var(--ink);
     font:14px 'DM Sans',sans-serif}
-button,input{font:inherit}
+button,input,select{font:inherit}
 .topbar{height:70px;
     background:#ffffffdf;
     border-bottom:1px solid var(--line);
@@ -154,14 +154,17 @@ details summary::-webkit-details-marker{display:none}
 .field label{font-size:10px;
     font-weight:700;
     color:#65728a}
-.field input{height:39px;
+.field input,.field select{width:100%;
+    max-width:320px;
+    height:39px;
     border:1px solid #e5e9f0;
     border-radius:9px;
     padding:0 10px;
+    background:#fff;
     color:#46536b;
     font:11px 'DM Sans';
     outline:0}
-.field input:focus{border-color:#8395e9;
+.field input:focus,.field select:focus{border-color:#8395e9;
     box-shadow:0 0 0 3px #536fe31a}
 .form-actions{display:flex;
     justify-content:flex-end;
@@ -299,7 +302,7 @@ details summary::-webkit-details-marker{display:none}
 <h2>Tambah pegawai</h2>
 <p>Tambahkan pegawai ke direktori KP2MI.</p>
 </div>
-<span class="subtle">Buka formulir ï¼‹</span>
+<span class="subtle">Buka formulir</span>
 </summary>
 <form method="POST" action="{{ route('kepegawaian.pegawai.store') }}">
 @csrf
@@ -320,7 +323,12 @@ details summary::-webkit-details-marker{display:none}
 </div>
 <div class="field">
 <label for="unit">Unit kerja</label>
-<input id="unit" name="unit" value="{{ old('unit') }}" required>
+<select id="unit" name="unit" required>
+<option value="" disabled @selected(old('unit') === null)>Pilih unit kerja</option>
+@foreach($workUnits as $workUnit)
+<option value="{{ $workUnit }}" @selected(old('unit') === $workUnit)>{{ $workUnit }}</option>
+@endforeach
+</select>
 </div>
 </div>
 <div class="form-actions">

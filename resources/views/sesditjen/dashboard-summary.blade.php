@@ -4,7 +4,7 @@
 <div class="eyebrow">{{ mb_strtoupper($today) }}</div>
 <h1>Selamat datang, {{ auth()->user()->name }} <span style="font-size:22px">✦</span>
 </h1>
-<p>Ringkasan surat tugas berdasarkan data yang tersimpan.</p>
+<p>Ringkasan surat perjalanan dinas berdasarkan data yang tersimpan.</p>
 </div>
         <div class="date-chip">Periode berjalan · {{ now()->locale('id')->translatedFormat('F Y') }}</div>
     </div>
@@ -15,7 +15,7 @@
 </svg>
 </div>
 <div class="insight-copy">
-<b>Status persetujuan surat tugas</b>
+<b>Status persetujuan surat perjalanan dinas</b>
 <p>{{ number_format($pendingAssignments) }} pengajuan menunggu keputusan Sesditjen.</p>
 </div>
 <strong>{{ number_format($monthlyAssignments) }}<small>pengajuan bulan ini</small>
@@ -28,11 +28,11 @@
 <span class="stat-icon">◷</span>
 </div>
 <div class="stat-value">{{ number_format($pendingAssignments) }}</div>
-<div class="stat-foot">Surat tugas perlu ditinjau</div>
+<div class="stat-foot">Surat perjalanan dinas perlu ditinjau</div>
 </article>
         <article class="stat">
 <div class="stat-top">
-<span>Total surat tugas</span>
+<span>Total surat perjalanan dinas</span>
 <span class="stat-icon">▤</span>
 </div>
 <div class="stat-value">{{ number_format($totalAssignments) }}</div>
@@ -59,10 +59,10 @@
         <article class="panel">
 <div class="panel-head">
 <div>
-<div class="panel-title">Pengajuan surat tugas baru</div>
+<div class="panel-title">Pengajuan surat perjalanan dinas baru</div>
 <div class="panel-sub">Data dibuat · 7 hari terakhir</div>
 </div>
-<a class="text-btn" href="{{ route('sesditjen.surat-tugas.index') }}" style="text-decoration:none">Lihat semua →</a>
+<a class="text-btn" href="{{ route('sesditjen.surat-perjalanan-dinas.index') }}" style="text-decoration:none">Lihat semua →</a>
 </div>
             @php($chartMaximum = max(1, $assignmentWeek->max('count')))
             <div style="height:174px;display:flex;align-items:flex-end;justify-content:space-around;gap:12px;padding:16px 8px 0;border-bottom:1px solid #edf0f5">
@@ -73,16 +73,16 @@
 <span style="font-size:9px;color:#98a3b2">{{ $day['label'] }}<br>{{ $day['date'] }}</span>
 </div>
 @endforeach</div>
-            @if($assignmentWeek->sum('count') === 0)<p class="attendance-foot">Belum ada pengajuan surat tugas dalam 7 hari terakhir.</p>
+            @if($assignmentWeek->sum('count') === 0)<p class="attendance-foot">Belum ada pengajuan surat perjalanan dinas dalam 7 hari terakhir.</p>
 @endif
         </article>
         <article class="panel">
 <div class="panel-head">
 <div>
 <div class="panel-title">Antrean persetujuan</div>
-<div class="panel-sub">Surat tugas menunggu keputusan Anda</div>
+<div class="panel-sub">Surat perjalanan dinas menunggu keputusan Anda</div>
 </div>
-<a class="text-btn" href="{{ route('sesditjen.surat-tugas.approvals') }}" style="text-decoration:none">Buka antrean →</a>
+<a class="text-btn" href="{{ route('sesditjen.surat-perjalanan-dinas.approvals') }}" style="text-decoration:none">Buka antrean →</a>
 </div>
             @forelse($latestPendingAssignments as $letter)<div class="approval-item">
 <div class="doc-icon">◷</div>
@@ -92,7 +92,7 @@
 </div>
 <span class="pill pending">Menunggu</span>
 </div>
-@empty<div style="padding:26px 10px;text-align:center;color:#9aa5b5;font-size:11px">Tidak ada surat tugas yang menunggu keputusan.</div>
+@empty<div style="padding:26px 10px;text-align:center;color:#9aa5b5;font-size:11px">Tidak ada surat perjalanan dinas yang menunggu keputusan.</div>
 @endforelse
         </article>
     </div>
@@ -126,10 +126,10 @@
         <article class="panel">
 <div class="panel-head">
 <div>
-<div class="panel-title">Surat tugas terbaru</div>
+<div class="panel-title">Surat perjalanan dinas terbaru</div>
 <div class="panel-sub">Pengajuan dan keputusan terakhir</div>
 </div>
-<a class="text-btn" href="{{ route('sesditjen.surat-tugas.index') }}" style="text-decoration:none">Riwayat →</a>
+<a class="text-btn" href="{{ route('sesditjen.surat-perjalanan-dinas.index') }}" style="text-decoration:none">Riwayat →</a>
 </div>
             @forelse($latestAssignments as $letter)<div class="activity-row">
 <div class="activity-bullet">▤</div>
@@ -138,7 +138,7 @@
 <br>{{ $letter->employee_name }} · {{ $letter->status }}<time>{{ $letter->created_at->format('d/m/Y H:i') }}</time>
 </div>
 </div>
-@empty<div style="padding:23px 8px;text-align:center;color:#9aa5b5;font-size:11px">Belum ada surat tugas.</div>
+@empty<div style="padding:23px 8px;text-align:center;color:#9aa5b5;font-size:11px">Belum ada surat perjalanan dinas.</div>
 @endforelse
         </article>
     </div>

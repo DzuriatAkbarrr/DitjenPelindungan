@@ -28,7 +28,7 @@ class AssignmentLetterController extends Controller
     {
         $this->authorizeSesditjen();
 
-        abort_unless($assignmentLetter->status === 'Menunggu', 422, 'Surat tugas ini sudah memiliki keputusan.');
+        abort_unless($assignmentLetter->status === 'Menunggu', 422, 'Surat perjalanan dinas ini sudah memiliki keputusan.');
 
         $data = $request->validate([
             'status' => ['required', 'in:Disetujui,Ditolak'],
@@ -42,7 +42,7 @@ class AssignmentLetterController extends Controller
             'reviewed_at' => now(),
         ]);
 
-        return back()->with('status', 'Keputusan surat tugas berhasil disimpan.');
+        return back()->with('status', 'Keputusan surat perjalanan dinas berhasil disimpan.');
     }
 
     private function showList(bool $pendingOnly): View
@@ -52,7 +52,7 @@ class AssignmentLetterController extends Controller
             $query->where('status', 'Menunggu');
         }
 
-        return view('sesditjen.surat-tugas.index', [
+        return view('sesditjen.surat-perjalanan-dinas.index', [
             'letters' => $query->get(),
             'pendingOnly' => $pendingOnly,
             'pendingCount' => AssignmentLetter::where('status', 'Menunggu')->count(),

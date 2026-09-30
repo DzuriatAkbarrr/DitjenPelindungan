@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ $pendingOnly ? 'Persetujuan' : 'Surat Tugas' }} · Sesditjen</title>
+<title>{{ $pendingOnly ? 'Persetujuan' : 'Surat Perjalanan Dinas' }} · Sesditjen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -252,12 +252,12 @@ button,textarea{font:inherit}
 <div class="heading">
 <div>
 <div class="eyebrow">PERJALANAN DINAS</div>
-<h1>{{ $pendingOnly ? 'Persetujuan surat tugas' : 'Surat tugas' }}</h1>
-<p>{{ $pendingOnly ? 'Tinjau dan putuskan pengajuan dari Kepegawaian.' : 'Pantau seluruh pengajuan dan keputusan surat tugas.' }}</p>
+<h1>{{ $pendingOnly ? 'Persetujuan surat perjalanan dinas' : 'Surat perjalanan dinas' }}</h1>
+<p>{{ $pendingOnly ? 'Tinjau dan putuskan pengajuan dari Kepegawaian.' : 'Pantau seluruh pengajuan dan keputusan surat perjalanan dinas.' }}</p>
 </div>
 <div class="tabs">
-<a class="tab {{ $pendingOnly ? 'current' : '' }}" href="{{ route('sesditjen.surat-tugas.approvals') }}">Menunggu ({{ $pendingCount }})</a>
-<a class="tab {{ !$pendingOnly ? 'current' : '' }}" href="{{ route('sesditjen.surat-tugas.index') }}">Semua surat tugas</a>
+<a class="tab {{ $pendingOnly ? 'current' : '' }}" href="{{ route('sesditjen.surat-perjalanan-dinas.approvals') }}">Menunggu ({{ $pendingCount }})</a>
+<a class="tab {{ !$pendingOnly ? 'current' : '' }}" href="{{ route('sesditjen.surat-perjalanan-dinas.index') }}">Semua surat perjalanan dinas</a>
 </div>
 </div>
 @if(session('status'))<div class="flash success">{{ session('status') }}</div>
@@ -289,12 +289,12 @@ button,textarea{font:inherit}
 <section class="panel">
 <div class="panel-head">
 <div>
-<h2>{{ $pendingOnly ? 'Antrean persetujuan' : 'Riwayat surat tugas' }}</h2>
+<h2>{{ $pendingOnly ? 'Antrean persetujuan' : 'Riwayat surat perjalanan dinas' }}</h2>
 <p>{{ $letters->count() }} data {{ $pendingOnly ? 'menunggu keputusan' : 'tersimpan di database' }}</p>
 </div>
 </div>
 @if($letters->isEmpty())<div class="empty">
-<b>{{ $pendingOnly ? 'Tidak ada pengajuan yang menunggu' : 'Belum ada surat tugas' }}</b>{{ $pendingOnly ? 'Semua pengajuan sudah ditinjau.' : 'Pengajuan dari Kepegawaian akan tampil di sini.' }}</div>
+<b>{{ $pendingOnly ? 'Tidak ada pengajuan yang menunggu' : 'Belum ada surat perjalanan dinas' }}</b>{{ $pendingOnly ? 'Semua pengajuan sudah ditinjau.' : 'Pengajuan dari Kepegawaian akan tampil di sini.' }}</div>
 @else<div class="table-wrap">
 <table class="table">
 <thead>
@@ -322,13 +322,13 @@ button,textarea{font:inherit}
 @endif</td>
 <td>
 @if($letter->status === 'Menunggu')<div class="decision">
-<form method="POST" action="{{ route('sesditjen.surat-tugas.decide', $letter) }}">
+<form method="POST" action="{{ route('sesditjen.surat-perjalanan-dinas.decide', $letter) }}">
 @csrf @method('PATCH')<input type="hidden" name="status" value="Disetujui">
 <button class="approve" type="submit">Setujui pengajuan</button>
 </form>
 <details class="reject" @if($errors->any()) open @endif>
 <summary>Tolak pengajuan</summary>
-<form method="POST" action="{{ route('sesditjen.surat-tugas.decide', $letter) }}">
+<form method="POST" action="{{ route('sesditjen.surat-perjalanan-dinas.decide', $letter) }}">
 @csrf @method('PATCH')<input type="hidden" name="status" value="Ditolak">
 <textarea name="decision_note" placeholder="Tuliskan alasan penolakan" required>{{ old('decision_note') }}</textarea>
 <button type="submit">Simpan penolakan</button>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Surat Tugas · Kepegawaian</title>
+<title>Surat Perjalanan Dinas · Kepegawaian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -269,8 +269,8 @@ details summary::-webkit-details-marker{display:none}
 <div class="heading">
 <div>
 <div class="eyebrow">PERJALANAN DINAS</div>
-<h1>Surat tugas</h1>
-<p>Buat pengajuan surat tugas dan pantau keputusan Sesditjen.</p>
+<h1>Surat perjalanan dinas</h1>
+<p>Buat pengajuan surat perjalanan dinas dan pantau keputusan Sesditjen.</p>
 </div>
 </div>
 @if(session('status'))<div class="flash success">{{ session('status') }}</div>
@@ -295,12 +295,12 @@ details summary::-webkit-details-marker{display:none}
 <details class="panel" @if($errors->any()) open @endif>
 <summary class="panel-head">
 <div>
-<h2>Buat pengajuan surat tugas</h2>
+<h2>Buat pengajuan surat perjalanan dinas</h2>
 <p>Surat akan masuk ke antrean Sesditjen setelah disimpan.</p>
 </div>
-<span class="subtle">Buka formulir ï¼‹</span>
+<span class="subtle">Buka formulir</span>
 </summary>
-<form method="POST" action="{{ route('kepegawaian.surat-tugas.store') }}">
+<form method="POST" action="{{ route('kepegawaian.surat-perjalanan-dinas.store') }}">
 @csrf
 @if($errors->any())<div class="flash errors" style="margin-top:14px">
 <b>Periksa kembali data:</b>
@@ -351,12 +351,12 @@ details summary::-webkit-details-marker{display:none}
 <section class="panel">
 <div class="panel-head">
 <div>
-<h2>Daftar surat tugas</h2>
+<h2>Daftar surat perjalanan dinas</h2>
 <p>{{ $letters->count() }} pengajuan tersimpan di database</p>
 </div>
 </div>
 @if($letters->isEmpty())<div class="empty">
-<b>Belum ada surat tugas</b>Buat pengajuan pertama melalui formulir di atas.</div>
+<b>Belum ada surat perjalanan dinas</b>Buat pengajuan pertama melalui formulir di atas.</div>
 @else<div class="table-wrap">
 <table class="table">
 <thead>
@@ -385,7 +385,7 @@ details summary::-webkit-details-marker{display:none}
 @endif</td>
 <td>{{ $letter->decision_note ?: '—' }}</td>
 <td>
-@if($letter->status === 'Menunggu')<form method="POST" action="{{ route('kepegawaian.surat-tugas.destroy', $letter) }}" onsubmit="return confirm('Hapus pengajuan surat tugas ini?')">
+@if($letter->status === 'Menunggu')<form method="POST" action="{{ route('kepegawaian.surat-perjalanan-dinas.destroy', $letter) }}" onsubmit="return confirm('Hapus pengajuan surat perjalanan dinas ini?')">
 @csrf @method('DELETE')<button class="delete" type="submit">Hapus</button>
 </form>
 @else—@endif</td>

@@ -35,12 +35,12 @@
 </svg>
 <span>Rekap cuti</span>
 </a>
-            <a class="{{ request()->routeIs('kepegawaian.surat-tugas.*') ? 'active' : '' }}" href="{{ route('kepegawaian.surat-tugas.index') }}">
+            <a class="{{ request()->routeIs('kepegawaian.surat-perjalanan-dinas.*') ? 'active' : '' }}" href="{{ route('kepegawaian.surat-perjalanan-dinas.index') }}">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M7 3h7l5 5v13H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/>
 <path d="M14 3v6h6M8 13h7m-7 4h7"/>
 </svg>
-<span>Surat tugas</span>
+<span>Surat perjalanan dinas</span>
 </a>
             <div class="nav-label nav-label-spaced">PENGELOLAAN</div>
             <a class="{{ request()->routeIs('kepegawaian.pegawai.*') ? 'active' : '' }}" href="{{ route('kepegawaian.pegawai.index') }}">
@@ -58,14 +58,14 @@
 <span>Pengguna</span>
 </a>
         @else
-            <a class="{{ request()->routeIs('sesditjen.surat-tugas.index') ? 'active' : '' }}" href="{{ route('sesditjen.surat-tugas.index') }}">
+            <a class="{{ request()->routeIs('sesditjen.surat-perjalanan-dinas.index') ? 'active' : '' }}" href="{{ route('sesditjen.surat-perjalanan-dinas.index') }}">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M7 3h7l5 5v13H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/>
 <path d="M14 3v6h6M8 13h7m-7 4h7"/>
 </svg>
-<span>Surat tugas</span>
+<span>Surat perjalanan dinas</span>
 </a>
-            <a class="{{ request()->routeIs('sesditjen.surat-tugas.approvals') ? 'active' : '' }}" href="{{ route('sesditjen.surat-tugas.approvals') }}">
+            <a class="{{ request()->routeIs('sesditjen.surat-perjalanan-dinas.approvals') ? 'active' : '' }}" href="{{ route('sesditjen.surat-perjalanan-dinas.approvals') }}">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <circle cx="12" cy="12" r="9"/>
 <path d="m8 12 2.5 2.5L16 9"/>

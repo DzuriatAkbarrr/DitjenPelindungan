@@ -18,12 +18,12 @@ Route::middleware('auth')->prefix('kepegawaian')->name('kepegawaian.')->group(fu
     Route::delete('/cuti/{leaveRecord}', [LeaveRecordController::class, 'destroy'])
         ->name('cuti.destroy');
 
-    Route::get('/surat-tugas', [AssignmentLetterController::class, 'index'])
-        ->name('surat-tugas.index');
-    Route::post('/surat-tugas', [AssignmentLetterController::class, 'store'])
-        ->name('surat-tugas.store');
-    Route::delete('/surat-tugas/{assignmentLetter}', [AssignmentLetterController::class, 'destroy'])
-        ->name('surat-tugas.destroy');
+    Route::get('/surat-perjalanan-dinas', [AssignmentLetterController::class, 'index'])
+        ->name('surat-perjalanan-dinas.index');
+    Route::post('/surat-perjalanan-dinas', [AssignmentLetterController::class, 'store'])
+        ->name('surat-perjalanan-dinas.store');
+    Route::delete('/surat-perjalanan-dinas/{assignmentLetter}', [AssignmentLetterController::class, 'destroy'])
+        ->name('surat-perjalanan-dinas.destroy');
 
     Route::get('/pegawai', [EmployeeRecordController::class, 'index'])
         ->name('pegawai.index');

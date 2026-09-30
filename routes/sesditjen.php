@@ -8,10 +8,10 @@ Route::middleware('auth')->prefix('sesditjen')->name('sesditjen.')->group(functi
     Route::get('/dashboard', DashboardController::class)
         ->name('dashboard');
 
-    Route::get('/surat-tugas', [AssignmentLetterController::class, 'index'])
-        ->name('surat-tugas.index');
-    Route::get('/persetujuan-surat-tugas', [AssignmentLetterController::class, 'approvals'])
-        ->name('surat-tugas.approvals');
-    Route::patch('/surat-tugas/{assignmentLetter}/keputusan', [AssignmentLetterController::class, 'decide'])
-        ->name('surat-tugas.decide');
+    Route::get('/surat-perjalanan-dinas', [AssignmentLetterController::class, 'index'])
+        ->name('surat-perjalanan-dinas.index');
+    Route::get('/persetujuan-surat-perjalanan-dinas', [AssignmentLetterController::class, 'approvals'])
+        ->name('surat-perjalanan-dinas.approvals');
+    Route::patch('/surat-perjalanan-dinas/{assignmentLetter}/keputusan', [AssignmentLetterController::class, 'decide'])
+        ->name('surat-perjalanan-dinas.decide');
 });

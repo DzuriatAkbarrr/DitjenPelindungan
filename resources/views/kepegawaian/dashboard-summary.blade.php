@@ -4,7 +4,7 @@
             <div class="eyebrow">{{ mb_strtoupper($today) }}</div>
             <h1>Selamat datang, {{ auth()->user()->name }} <span style="font-size:22px">✦</span>
 </h1>
-            <p>Ringkasan berdasarkan data pegawai dan cuti yang tersimpan.</p>
+            <p>Ringkasan pegawai, cuti, dan surat perjalanan dinas yang tersimpan.</p>
         </div>
         <div class="date-chip">Periode berjalan · {{ now()->locale('id')->translatedFormat('F Y') }}</div>
     </div>
@@ -17,7 +17,7 @@
 </div>
         <div class="insight-copy">
             <b>Ringkasan data saat ini</b>
-            <p>{{ number_format($activeEmployees) }} pegawai aktif dan {{ number_format($pendingLeaveCount) }} pengajuan cuti menunggu persetujuan.</p>
+            <p>{{ number_format($activeEmployees) }} pegawai aktif, {{ number_format($pendingLeaveCount) }} pengajuan cuti, dan {{ number_format($pendingAssignments) }} surat perjalanan dinas menunggu keputusan.</p>
         </div>
         <strong>{{ number_format($monthlyLeaveCount) }}<small>pengajuan cuti bulan ini</small>
 </strong>
@@ -160,4 +160,58 @@
             @endforelse
         </article>
     </div>
+
+    <article class="panel" style="margin-top: 17px">
+        <div class="panel-head">
+            <div>
+                <div class="panel-title">Surat perjalanan dinas</div>
+                <div class="panel-sub">Ringkasan pengajuan dan keputusan terbaru</div>
+            </div>
+            <a class="text-btn" href="{{ route('kepegawaian.surat-perjalanan-dinas.index') }}" style="text-decoration: none">
+                Kelola pengajuan →
+            </a>
+        </div>
+
+        <div class="stats" style="margin-top: 16px">
+            <article class="stat">
+                <div class="stat-top">Total pengajuan</div>
+                <div class="stat-value">{{ number_format($totalAssignments) }}</div>
+                <div class="stat-foot">Semua surat perjalanan dinas</div>
+            </article>
+            <article class="stat">
+                <div class="stat-top">Menunggu keputusan</div>
+                <div class="stat-value">{{ number_format($pendingAssignments) }}</div>
+                <div class="stat-foot">Menunggu Sesditjen</div>
+            </article>
+            <article class="stat">
+                <div class="stat-top">Disetujui</div>
+                <div class="stat-value">{{ number_format($approvedAssignments) }}</div>
+                <div class="stat-foot">Sudah disetujui</div>
+            </article>
+            <article class="stat">
+                <div class="stat-top">Ditolak</div>
+                <div class="stat-value">{{ number_format($rejectedAssignments) }}</div>
+                <div class="stat-foot">Sudah ditolak</div>
+            </article>
+        </div>
+
+        <div class="approval-list" style="margin-top: 16px">
+            @forelse($latestAssignments as $letter)
+                <div class="approval-item">
+                    <div class="doc-icon">▤</div>
+                    <div class="approval-info">
+                        <b>{{ $letter->title }}</b>
+                        <span>{{ $letter->employee_name }} · {{ $letter->destination }} · {{ $letter->created_at->format('d/m/Y') }}</span>
+                    </div>
+                    <span class="pill {{ $letter->status === 'Disetujui' ? 'approved' : ($letter->status === 'Ditolak' ? 'rejected' : 'pending') }}">
+                        {{ $letter->status }}
+                    </span>
+                </div>
+            @empty
+                <div style="padding: 23px 8px; text-align: center; color: #9aa5b5; font-size: 11px">
+                    Belum ada pengajuan surat perjalanan dinas.
+                </div>
+            @endforelse
+        </div>
+    </article>
 </section>

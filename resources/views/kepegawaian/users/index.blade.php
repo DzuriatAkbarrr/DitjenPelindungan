@@ -181,7 +181,7 @@ details button{border:0;
 <div class="field">
 <label>Peran</label>
 <select name="role" required>
-<option value="kepegawaian">Kepegawaian · pengelola</option>
+<option value="kepegawaian">Kepegawaian · osdm</option>
 <option value="sesditjen">Sesditjen · pemberi persetujuan</option>
 </select>
 @error('role')<span class="error">{{ $message }}</span>

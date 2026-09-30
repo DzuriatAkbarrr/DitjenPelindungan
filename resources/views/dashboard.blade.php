@@ -622,7 +622,7 @@ button{cursor:pointer}
 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
 <path d="M7 3h7l5 5v13H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/>
 <path d="M14 3v6h6M8 13h7m-7 4h7"/>
-</svg>Surat tugas <span class="count" id="letter-count">03</span>
+</svg>Surat perjalanan dinas <span class="count" id="letter-count">03</span>
 </button>
         <button data-page="approvals">
 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
@@ -705,7 +705,7 @@ button{cursor:pointer}
 </div>
 <div class="insight-copy">
 <b>Insight kepegawaian hari ini</b>
-<p>Disiplin kehadiran naik <b>4,8%</b> dibanding minggu lalu. Ada 3 surat tugas menunggu persetujuan.</p>
+<p>Disiplin kehadiran naik <b>4,8%</b> dibanding minggu lalu. Ada 3 surat perjalanan dinas menunggu persetujuan.</p>
 </div>
 <strong>96,4%<small>tingkat kehadiran</small>
 </strong>
@@ -750,11 +750,11 @@ button{cursor:pointer}
 </span>
 </div>
 <div class="stat-value" id="pending-stat">03</div>
-<div class="stat-foot">Surat tugas perlu ditinjau</div>
+<div class="stat-foot">Surat perjalanan dinas perlu ditinjau</div>
 </article>
             <article class="stat">
 <div class="stat-top">
-<span>Surat tugas bulan ini</span>
+<span>Surat perjalanan dinas bulan ini</span>
 <span class="stat-icon">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M7 3h7l5 5v13H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/>
@@ -930,17 +930,17 @@ button{cursor:pointer}
 <div class="heading">
 <div>
 <div class="eyebrow">ADMINISTRASI PERJALANAN DINAS</div>
-<h1>Surat tugas</h1>
-<p>Kelola pengajuan dan pantau status surat tugas lintas unit.</p>
+<h1>Surat perjalanan dinas</h1>
+<p>Kelola pengajuan dan pantau status surat perjalanan dinas lintas unit.</p>
 </div>
-<button class="primary" data-add="letter" id="new-letter">＋ Buat surat tugas</button>
+<button class="primary" data-add="letter" id="new-letter">＋ Buat surat perjalanan dinas</button>
 </div>
 <div class="stats">
 <article class="stat">
 <div class="stat-top">Total bulan ini<span class="stat-icon">▤</span>
 </div>
 <div class="stat-value" id="letter-total-view">28</div>
-<div class="stat-foot">Semua surat tugas</div>
+<div class="stat-foot">Semua surat perjalanan dinas</div>
 </article>
 <article class="stat">
 <div class="stat-top">Menunggu persetujuan<span class="stat-icon">◷</span>
@@ -964,8 +964,8 @@ button{cursor:pointer}
 <article class="panel">
 <div class="table-head">
 <div>
-<div class="panel-title">Daftar surat tugas</div>
-<div class="panel-sub">Lacak pengajuan surat tugas dan progres persetujuannya.</div>
+<div class="panel-title">Daftar surat perjalanan dinas</div>
+<div class="panel-sub">Lacak pengajuan surat perjalanan dinas dan progres persetujuannya.</div>
 </div>
 <input class="search" id="letter-search" placeholder="⌕  Cari surat...">
 </div>
@@ -997,7 +997,7 @@ button{cursor:pointer}
 <article class="panel">
 <div class="panel-head">
 <div>
-<div class="panel-title">Pengajuan surat tugas</div>
+<div class="panel-title">Pengajuan surat perjalanan dinas</div>
 <div class="panel-sub">Pengajuan yang memerlukan keputusan Sesditjen.</div>
 </div>
 </div>
@@ -1060,7 +1060,7 @@ button{cursor:pointer}
 <div class="stat-foot">Di 8 unit kerja</div>
 </article>
 <article class="stat">
-<div class="stat-top">Surat tugas<span class="stat-icon">▤</span>
+<div class="stat-top">Surat perjalanan dinas<span class="stat-icon">▤</span>
 </div>
 <div class="stat-value">28</div>
 <div class="stat-foot">Diterbitkan bulan ini</div>
@@ -1074,7 +1074,7 @@ button{cursor:pointer}
 </div>
 <article class="panel">
 <div class="panel-title">Ringkasan bulanan</div>
-<div class="panel-sub">Visualisasi kehadiran dan surat tugas akan mengikuti data yang telah direkap.</div>
+<div class="panel-sub">Visualisasi kehadiran dan surat perjalanan dinas akan mengikuti data yang telah direkap.</div>
 <div style="margin-top:35px;color:#8793a7;font-size:12px">Pilih periode laporan &nbsp; <select class="role-select">
 <option>September 2026</option>
 <option>Agustus 2026</option>
@@ -1115,7 +1115,7 @@ const units=[['Direktorat Penempatan',312,96],['Direktorat Perlindungan',286,94]
 const people=[['Nadia Amalia','198906122010012001','Sekretariat Ditjen','NA'],['Rizky Pratama','199204152014021002','Direktorat Penempatan','RP'],['Dewi Anggraini','199111232013032004','Biro Perencanaan','DA'],['Bima Saputra','198712082009011003','Direktorat Perlindungan','BS'],['Siti Rahmawati','199305182015042006','Direktorat Promosi','SR']];
 let letters=JSON.parse(localStorage.getItem('rk_letters')||'null')||seedLetters;
 let attendanceRecords=JSON.parse(localStorage.getItem('rk_attendance')||'[]');
-let activity=JSON.parse(localStorage.getItem('rk_activity')||'null')||[{text:'<b>Rizky Pratama</b> mengajukan surat tugas',time:'12 menit lalu',icon:'↗'},{text:'<b>Rekap absensi</b> unit kerja diperbarui',time:'38 menit lalu',icon:'✓'},{text:'<b>Surat tugas ST/139</b> disetujui Sesditjen',time:'1 jam lalu',icon:'▤'}];
+let activity=JSON.parse(localStorage.getItem('rk_activity')||'null')||[{text:'<b>Rizky Pratama</b> mengajukan surat perjalanan dinas',time:'12 menit lalu',icon:'↗'},{text:'<b>Rekap absensi</b> unit kerja diperbarui',time:'38 menit lalu',icon:'✓'},{text:'<b>Surat perjalanan dinas ST/139</b> disetujui Sesditjen',time:'1 jam lalu',icon:'▤'}];
 let role=@json(auth()->user()->role);const currentUserName=@json(auth()->user()->name);const save=()=>{localStorage.setItem('rk_letters',JSON.stringify(letters));localStorage.setItem('rk_activity',JSON.stringify(activity));localStorage.setItem('rk_attendance',JSON.stringify(attendanceRecords))};
 const statusClass=s=>s==='Disetujui'?'approved':s==='Ditolak'?'rejected':'pending';
 function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
@@ -1146,7 +1146,7 @@ function render(){let waiting=letters.filter(x=>x.status==='Menunggu');document.
 <td>
 <span class="pill ${statusClass(x.status)}">${x.status}</span>
 </td>
-<td>${role==='sesditjen'&&x.status==='Menunggu'?`<button class="text-btn" onclick="decide(${x.id},'Disetujui')">Setujui</button>`:'<button class="text-btn" onclick="toast(\'Detail surat tugas\')">Detail ↗</button>'}</td>
+<td>${role==='sesditjen'&&x.status==='Menunggu'?`<button class="text-btn" onclick="decide(${x.id},'Disetujui')">Setujui</button>`:'<button class="text-btn" onclick="toast(\'Detail surat perjalanan dinas\')">Detail ↗</button>'}</td>
 </tr>`).join('');
  document.getElementById('unit-table').innerHTML=units.map((u,i)=>`<tr>
 <td class="person-cell">
@@ -1196,17 +1196,17 @@ function render(){let waiting=letters.filter(x=>x.status==='Menunggu');document.
 </div>`).join('');
  document.getElementById('new-letter').style.display=role==='kepegawaian'?'inline-block':'none';document.getElementById('greeting-name').textContent=currentUserName.split(' ')[0];
 }
-function decide(id,status){if(role!=='sesditjen'){toast('Hanya Sesditjen yang dapat memberi persetujuan');return}let item=letters.find(x=>x.id===id);if(!item)return;item.status=status;activity.unshift({text:`<b>Surat tugas ${item.number}</b> ${status.toLowerCase()} Sesditjen`,time:'Baru saja',icon:status==='Disetujui'?'✓':'×'});save();render();toast(`Surat tugas ${status.toLowerCase()}`)}
-const labels={overview:'Ringkasan',attendance:'Rekap absensi',letters:'Surat tugas',approvals:'Persetujuan',employees:'Data pegawai',reports:'Laporan'};
+function decide(id,status){if(role!=='sesditjen'){toast('Hanya Sesditjen yang dapat memberi persetujuan');return}let item=letters.find(x=>x.id===id);if(!item)return;item.status=status;activity.unshift({text:`<b>Surat perjalanan dinas ${item.number}</b> ${status.toLowerCase()} Sesditjen`,time:'Baru saja',icon:status==='Disetujui'?'✓':'×'});save();render();toast(`Surat perjalanan dinas ${status.toLowerCase()}`)}
+const labels={overview:'Ringkasan',attendance:'Rekap absensi',letters:'Surat perjalanan dinas',approvals:'Persetujuan',employees:'Data pegawai',reports:'Laporan'};
 function go(page){document.querySelectorAll('.section-view').forEach(s=>s.classList.toggle('visible',s.id===page));document.querySelectorAll('#nav button[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('crumb-page').textContent=labels[page];document.getElementById('sidebar').classList.remove('open');}
 document.getElementById('nav').addEventListener('click',e=>{let b=e.target.closest('[data-page]');if(b)go(b.dataset.page)});document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.goto)));document.getElementById('menu-toggle').onclick=()=>document.getElementById('sidebar').classList.toggle('open');
 document.getElementById('unit-search').oninput=e=>document.querySelectorAll('#unit-table tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(e.target.value.toLowerCase()));document.getElementById('letter-search').oninput=e=>document.querySelectorAll('#letter-table tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(e.target.value.toLowerCase()));document.getElementById('employee-search').oninput=e=>document.querySelectorAll('#employee-table tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(e.target.value.toLowerCase()));
 const modal=document.getElementById('modal'),fields=document.getElementById('form-fields');let currentForm='';
-const configs={letter:{title:'Buat surat tugas',fields:[['title','Nama kegiatan','text','full'],['person','Nama pegawai','text',''],['unit','Unit kerja','select','',['Direktorat Penempatan','Direktorat Perlindungan','Sekretariat Ditjen','Biro Perencanaan','Direktorat Promosi']],['destination','Kota tujuan','text',''],['date','Tanggal perjalanan','text','']]},attendance:{title:'Input rekap absensi',fields:[['person','Nama pegawai','text',''],['unit','Unit kerja','select','',['Direktorat Penempatan','Direktorat Perlindungan','Sekretariat Ditjen','Biro Perencanaan']],['date','Tanggal','date',''],['status','Status kehadiran','select','',['Hadir','Izin','Sakit','Dinas']] ]},employee:{title:'Tambah pegawai',fields:[['person','Nama lengkap','text',''],['nip','NIP','text',''],['unit','Unit kerja','select','',['Direktorat Penempatan','Direktorat Perlindungan','Sekretariat Ditjen','Biro Perencanaan','Direktorat Promosi']] ]}};
+const configs={letter:{title:'Buat surat perjalanan dinas',fields:[['title','Nama kegiatan','text','full'],['person','Nama pegawai','text',''],['unit','Unit kerja','select','',['Direktorat Penempatan','Direktorat Perlindungan','Sekretariat Ditjen','Biro Perencanaan','Direktorat Promosi']],['destination','Kota tujuan','text',''],['date','Tanggal perjalanan','text','']]},attendance:{title:'Input rekap absensi',fields:[['person','Nama pegawai','text',''],['unit','Unit kerja','select','',['Direktorat Penempatan','Direktorat Perlindungan','Sekretariat Ditjen','Biro Perencanaan']],['date','Tanggal','date',''],['status','Status kehadiran','select','',['Hadir','Izin','Sakit','Dinas']] ]},employee:{title:'Tambah pegawai',fields:[['person','Nama lengkap','text',''],['nip','NIP','text',''],['unit','Unit kerja','select','',['Direktorat Penempatan','Direktorat Perlindungan','Sekretariat Ditjen','Biro Perencanaan','Direktorat Promosi']] ]}};
 function openForm(type){if(role!=='kepegawaian'){toast('Mode Sesditjen hanya memiliki akses persetujuan');return}currentForm=type;let c=configs[type];document.getElementById('modal-title').textContent=c.title;fields.innerHTML=c.fields.map(([name,label,input,span,options])=>`<div class="field ${span==='full'?'full':''}">
 <label>${label}</label>${input==='select'?`<select name="${name}" required>${options.map(o=>`<option>${o}</option>`).join('')}</select>`:`<input name="${name}" type="${input}" placeholder="${label}" required>`}</div>`).join('');modal.classList.add('open')}
 document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>openForm(b.dataset.add));document.getElementById('modal-close').onclick=document.getElementById('modal-cancel').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
-document.getElementById('entry-form').onsubmit=e=>{e.preventDefault();let data=Object.fromEntries(new FormData(e.target));if(currentForm==='letter'){let item={id:Date.now(),number:`ST/${143+letters.length-seedLetters.length}/KP2MI/IX/2026`,title:data.title,person:data.person,unit:data.unit,destination:data.destination,date:data.date,status:'Menunggu'};letters.unshift(item);activity.unshift({text:`<b>${item.person}</b> mengajukan surat tugas`,time:'Baru saja',icon:'↗'});go('letters')}else if(currentForm==='employee'){people.unshift([data.person,data.nip,data.unit,data.person.split(' ').map(w=>w[0]).slice(0,2).join('')]);go('employees')}else{attendanceRecords.unshift(data);activity.unshift({text:`<b>${data.person}</b> diperbarui: ${data.status} · ${data.unit}`,time:'Baru saja',icon:'✓'});go('attendance')}save();render();modal.classList.remove('open');e.target.reset();toast('Data berhasil disimpan')};
+document.getElementById('entry-form').onsubmit=e=>{e.preventDefault();let data=Object.fromEntries(new FormData(e.target));if(currentForm==='letter'){let item={id:Date.now(),number:`ST/${143+letters.length-seedLetters.length}/KP2MI/IX/2026`,title:data.title,person:data.person,unit:data.unit,destination:data.destination,date:data.date,status:'Menunggu'};letters.unshift(item);activity.unshift({text:`<b>${item.person}</b> mengajukan surat perjalanan dinas`,time:'Baru saja',icon:'↗'});go('letters')}else if(currentForm==='employee'){people.unshift([data.person,data.nip,data.unit,data.person.split(' ').map(w=>w[0]).slice(0,2).join('')]);go('employees')}else{attendanceRecords.unshift(data);activity.unshift({text:`<b>${data.person}</b> diperbarui: ${data.status} · ${data.unit}`,time:'Baru saja',icon:'✓'});go('attendance')}save();render();modal.classList.remove('open');e.target.reset();toast('Data berhasil disimpan')};
 render();
 </script>
 </body>

@@ -201,7 +201,7 @@ body{margin:0;
 </div>
 <div class="kicker">Sistem informasi kepegawaian</div>
 <h1>Kerja lebih terarah,<br>layanan lebih berdampak.</h1>
-<p>Satu ruang untuk memantau kehadiran, mengelola surat tugas, dan mempercepat alur persetujuan di lingkungan KP2MI.</p>
+<p>Satu ruang untuk memantau kehadiran, mengelola surat perjalanan dinas, dan mempercepat alur persetujuan di lingkungan KP2MI.</p>
 <div class="visual-footer">Kementerian Pelindungan Pekerja Migran Indonesia</div>
 </div>
 </section>
